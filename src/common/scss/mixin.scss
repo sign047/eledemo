@@ -1,0 +1,83 @@
+
+$baseFontSize: 75;
+@mixin border-1px($color){
+  position: relative;
+  &:after{
+    display: block;
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top:1px solid $color;
+    content:'';
+    }
+}
+border-none(){
+  &:after{
+    display: none;
+    }
+}
+
+
+
+@function px2rem($px) {
+    @return $px / $baseFontSize * 1rem;
+}
+
+@function px2rem2($px) {
+    @return $px*2 / $baseFontSize * 1rem;
+}
+
+@mixin dpr($name,$px) {
+    #{$name}: $px / 2 * 1px;
+    [data-dpr="2"] & {
+        #{$name}: $px*1px;
+    }
+    [data-dpr="3"] & {
+        #{$name}: $px * 3/2*1px;
+    }
+}
+
+@mixin bgimg($url){
+  background-image: url($url + "@2x.png");
+  [data-dpr="3"] & {
+       background-image: url($url + "@3x.png");
+  }
+    
+}   
+
+@mixin dprXY($name,$px,$py) {
+    #{$name}: $px / 2 * 1px $py / 2 * 1px;
+    [data-dpr="2"] & {
+        #{$name}: $px*1px $py*1px;
+    }
+    [data-dpr="3"] & {
+        #{$name}: $px * 3/2*1px $py * 3/2*1px;
+    }
+}
+
+@mixin translate3d($px,$py,$pz) {
+    transform: translate3d($px / 2 * 1px, $py / 2 * 1px,$pz / 2 * 1px);
+    -webkit-transform: translate3d($px / 2 * 1px, $py / 2 * 1px,$pz / 2 * 1px);
+    [data-dpr="2"] & {
+        -webkit-transform: translate3d($px*1px,$py*1px,$pz*1px);
+        transform: translate3d($px*1px,$py*1px,$pz*1px);
+    }
+    [data-dpr="3"] & {
+        -webkit-transform: translate3d($px * 3/2*1px,$py * 3/2*1px,$pz * 3/2*1px);
+        transform: translate3d($px * 3/2*1px,$py * 3/2*1px,$pz * 3/2*1px);
+    }
+}
+@mixin transform($px,$py,$pz,$pf) {
+    -webkit-transform: translate3d($px, $py / 2 * 1px,$pz / 2 * 1px) scale($pf);
+    transform: translate3d($px, $py / 2 * 1px,$pz / 2 * 1px) scale($pf);
+    [data-dpr="2"] & {
+        -webkit-transform: translate3d($px,$py*1px,$pz*1px) scale($pf);
+        transform: translate3d($px,$py*1px,$pz*1px) scale($pf);
+    }
+    [data-dpr="3"] & {
+        -webkit-transform: translate3d($px,$py * 3/2*1px,$pz * 3/2*1px) scale($pf);
+        transform: translate3d($px,$py * 3/2*1px,$pz * 3/2*1px) scale($pf); 
+    }
+}
+ 

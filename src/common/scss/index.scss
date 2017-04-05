@@ -1,0 +1,30 @@
+@import "./mixin";
+@import "./icon";
+
+body, html{
+  line-height: 1;
+  font-weight: 200;
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif;
+}
+
+
+.box{
+  display:flex;
+
+}
+.horizontal{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.vertal{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.flex{
+  flex:1;
+ 
+  width:100%;
+}
